@@ -1,0 +1,11 @@
+eclipse.preferences.version=1
+encoding//commons/Context.py=utf-8
+encoding//commons/Test.py=utf-8
+encoding//commons/logger.py=utf-8
+encoding//commons/ui.py=utf-8
+encoding//screens/catalog_product_screen.py=utf-8
+encoding//screens/module_screen.py=utf-8
+encoding//tests/admin_admin_page.py=utf-8
+encoding//tests/admin_catalog_page.py=utf-8
+encoding//tests/admin_module_page.py=utf-8
+encoding//tests/install_shop_page.py=utf-8

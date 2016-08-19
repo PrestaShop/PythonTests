@@ -1,0 +1,46 @@
+[{ 
+  "page":"install_shop_page",
+  "function": "install_shop", 
+  "log": "Installation of a new shop",
+  "variables": 
+	[ 
+		{
+		"langue":"en",
+		"name":"",
+		"firstname":"guillaume",
+		"lastname":"marsille",
+		"email":"guillaume.marsille@prestashop.com",
+		"password":"guillaume95",
+		"dbServer":"",
+		"dbName":"",
+		"dbLogin":"",
+		"dbPassword":"",
+		"dbprefix":"",
+		"activity":"0",
+		"git_repo":""
+		}
+	] 
+},
+{ 
+  "page":"install_shop_page",
+  "function": "reinstall_shop", 
+  "log": "Reinstallation of an existing shop",
+  "variables": 
+	[ 
+		{
+		"langue":"fr",
+		"name":"",
+		"firstname":"guillaume",
+		"lastname":"marsille",
+		"email":"guillaume.marsille@prestashop.com",
+		"password":"guillaume95",
+		"dbServer":"",
+		"dbName":"",
+		"dbLogin":"",
+		"dbPassword":"",
+		"dbprefix":"",
+		"activity":"0",
+		"git_repo":""
+		}
+	] 
+} ]

@@ -1,0 +1,10 @@
+[{ 
+  "page":"admin_admin_page",
+  "function": "open_all_controller", 
+  "log": "open all controlers",
+  "variables": 
+	[ 
+		{
+		}
+	] 
+}]

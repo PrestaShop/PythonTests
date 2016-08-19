@@ -1,0 +1,3 @@
+ADMIN/*/url:=http://str(j)/str(i)/admin-dev/index.php,login:=demo@prestashop.com,password:=prestashop_demo,store_source:=C:/wamp/www//*/
+ADMINDEV/*/url:=http://str(j)/str(i)/admin-dev/index.php,login:=demo@prestashop.com,password:=prestashop_demo,store_source:=C:/wamp/www//*/
+CLIENT/*/url:=http://str(j)/str(i)/PrestaShop/index.php/*/

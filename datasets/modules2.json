@@ -1,0 +1,68 @@
+[{ 
+  "page":"admin_module_page",
+  "function": "search_module", 
+  "log": "Search a module",
+  "variables": 
+	[ 
+		{
+		"search_name":"Amazon",
+		"view":"grid"
+		}
+	] 
+},{
+    "page":"admin_module_page",
+	"function": "check_categorie", 
+	"log": "check a module",
+	"variables": 
+		[ 
+			{
+			"search_name":"amazon",
+			"view":"grid"
+			}
+		] 
+},{
+    "page":"admin_module_page",
+	"function": "sort_modules", 
+	"log": "check a module",
+	"variables": 
+		[ 
+			{
+			"search_name":"amazon",
+			"view":"grid"
+			}
+		] 
+},{ 
+  "page":"admin_module_page",
+  "function": "search_module", 
+  "log": "Search a module",
+  "variables": 
+	[ 
+		{
+		"search_name":"Amazon",
+		"view":"list"
+		}
+	] 
+},{
+    "page":"admin_module_page",
+	"function": "check_categorie", 
+	"log": "check a module",
+	"variables": 
+		[ 
+			{
+			"search_name":"amazon",
+			"view":"list"
+			}
+		] 
+},{
+    "page":"admin_module_page",
+	"function": "sort_modules", 
+	"log": "check a module",
+	"variables": 
+		[ 
+			{
+			"search_name":"amazon",
+			"view":"list"
+			}
+		] 
+}
+]
