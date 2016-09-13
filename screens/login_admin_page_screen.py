@@ -2,22 +2,21 @@ from commons import ui
 import time
 
 
-class loginAdminPageScreen():    
-    
+class loginAdminPageScreen():
     def __init__(self):
         self._objects = {
-                        'email'  : ("xpath", "//*[@id = 'email']"),
-                        'password'  : ("xpath", "//*[@id = 'passwd']"),
-                        'btn_connection'  : ("xpath", "//*[@name='submitLogin']"),
-                        'profil'  : ("xpath", "//*[@class = 'employee-dropdown dropdown']/div"),
-                        'logout'  : ("xpath", "//*[@id = 'header_logout']"),
-                        
-                        
-                         }
-    def connect(self,login,password):
+            'email': ("xpath", "//*[@id = 'email']"),
+            'password': ("xpath", "//*[@id = 'passwd']"),
+            'btn_connection': ("xpath", "//*[@name='submitLogin']"),
+            'profil': ("xpath", "//*[@class = 'dropdown']//a//span//img"),
+            'logout': ("xpath", "//*[@id = 'header_logout']"),
+
+        }
+
+    def connect(self, login, password):
         time.sleep(2)
         ui.set_text(self._objects['email'], login)
-        ui.set_text(self._objects['password'], password)     
+        ui.set_text(self._objects['password'], password)
         ui.click(self._objects['btn_connection'])
 
     def disconnect(self):

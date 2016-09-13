@@ -1,43 +1,41 @@
-from commons.Context import Context 
+from commons.Context import Context
 from commons.Configuration import Configuration
 import json
 
-
 if __name__ == '__main__':
-    #Reading the conf & cli args
+    # Reading the conf & cli args
     test_conf_token = 'test'
     configuration = Configuration(test_conf_token)
-
 
 
 def main_function():
     """
     @summary: function to run the test specified in the command line wioth the good parameters
     """
-    config = Configuration() #va lire le fichier global.cfg dans dossier conf et les variable passees dans la ligne de commande)
-    
-    for file_name in config.datasets_file_name: #parcours les dataset pour trouver le bon et recuperer les donnees
+    config = Configuration()  # va lire le fichier global.cfg dans dossier conf et les variable passees dans la ligne de commande)
+
+    for file_name in config.datasets_file_name:  # parcours les dataset pour trouver le bon et recuperer les donnees
         if file_name != "":
-            json_data=open("datasets/" + file_name + ".json")
+            json_data = open("datasets/" + file_name + ".json")
             datas = json.load(json_data)
             relaunch = []
             final_status = True
             for data in datas:
                 if data['function'] == config.function_test or config.function_test == None:
                     test_status = False
-                    my_line = (data['page'] + "||" + data['function']  + "||" + data['log']).split('||')
-                
+                    my_line = (data['page'] + "||" + data['function'] + "||" + data['log']).split('||')
+
                     if config.function_test == None:
                         config._fct_test = my_line[1]
                     my_test = __import__('tests.' + my_line[0])
                     test_file = getattr(my_test, my_line[0])
                     test_class = getattr(test_file, my_line[0])
-                    test_fct = getattr(test_class(),my_line[1])
+                    test_fct = getattr(test_class(), my_line[1])
                     var_exist = 0
-                    if  data['variables'] is not None:
+                    if data['variables'] is not None:
                         my_var_test = {}
                         try:
-                            for my_key,my_value in data['variables'][0].items():
+                            for my_key, my_value in data['variables'][0].items():
                                 my_var_test[my_key] = my_value
                                 var_exist = 1
                         except:
@@ -47,10 +45,15 @@ def main_function():
                             Context().launch_browser2(clean_session=True)
                         try:
                             if config.back == False:
-                                if Configuration().vm == None: 
-                                    url = Context().environment.url.replace('str(i)',Configuration().storename).replace('str(j)','localhost')
+                                storename = ""
+                                if Configuration().storename != None:
+                                    storename = Configuration().storename
+                                if Configuration().vm == None:
+                                    url = Context().environment.url.replace('str(i)', storename).replace('str(j)',
+                                                                                                         'localhost/')
                                 else:
-                                    url = Context().environment.url.replace('str(i)',Configuration().storename).replace('str(j)',Configuration().vm)
+                                    url = Context().environment.url.replace('str(i)', storename).replace('str(j)',
+                                                                                                         Configuration().vm + '/')
                                 Context().goto_url(url)
                             if var_exist == 1:
                                 test_status_save = test_status
@@ -71,12 +74,13 @@ def main_function():
                             datas.append(data)
                             relaunch.append(data)
                             test_status = test_status_save
-                            Context().logger.failure("Test ({0}) failed for the first time, we will relaunch it".format(my_line[2]))
-                        else :
-                                final_status = False
+                            Context().logger.failure(
+                                "Test ({0}) failed for the first time, we will relaunch it".format(my_line[2]))
+                        else:
+                            final_status = False
             if final_status == False:
                 import sys
-                sys.exit(1) 
+                sys.exit(1)
 
 
 if __name__ == '__main__':

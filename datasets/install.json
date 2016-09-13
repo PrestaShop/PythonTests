@@ -7,37 +7,37 @@
 		{
 		"langue":"en",
 		"name":"",
-		"firstname":"guillaume",
-		"lastname":"marsille",
-		"email":"guillaume.marsille@prestashop.com",
-		"password":"guillaume95",
-		"dbServer":"",
-		"dbName":"",
-		"dbLogin":"",
-		"dbPassword":"",
+		"firstname":"Basma",
+		"lastname":"Yangui",
+		"email":"basma.yangui@prestashop.com",
+		"password":"MedBas_2016",
+		"dbServer":"localhost",
+		"dbName":"prestashop",
+		"dbLogin":"root",
+		"dbPassword":"MedBas_2016",
 		"dbprefix":"",
 		"activity":"0",
 		"git_repo":""
 		}
-	] 
+	]
 },
-{ 
+{
   "page":"install_shop_page",
-  "function": "reinstall_shop", 
+  "function": "reinstall_shop",
   "log": "Reinstallation of an existing shop",
-  "variables": 
-	[ 
+  "variables":
+	[
 		{
 		"langue":"fr",
 		"name":"",
-		"firstname":"guillaume",
-		"lastname":"marsille",
-		"email":"guillaume.marsille@prestashop.com",
-		"password":"guillaume95",
-		"dbServer":"",
-		"dbName":"",
-		"dbLogin":"",
-		"dbPassword":"",
+		"firstname":"Basma",
+		"lastname":"Yangui",
+		"email":"basma.yangui@prestashop.com",
+		"password":"MedBas_2016",
+		"dbServer":"localhost",
+		"dbName":"prestashop",
+		"dbLogin":"root",
+		"dbPassword":"MedBas_2016",
 		"dbprefix":"",
 		"activity":"0",
 		"git_repo":""
