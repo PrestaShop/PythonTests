@@ -659,7 +659,8 @@ class catalogProductScreen():
                 ui.set_text(self._objects['product_new_quantity_minimum'], var_test.get("qty_min"),True)
             ui.set_text(self._objects['product_new_quantity_in_stock'], var_test.get("qty_msg_stock"),True)
             ui.set_text(self._objects['product_new_quantity_out_stock'], var_test.get("qty_msg_unstock"),True)
-            ui.set_text(self._objects['product_new_quantity_date_stock'], var_test.get("qty_date"),True)
+            if var_test.get('variation')=="":
+                ui.set_text(self._objects['product_new_quantity_date_stock'], var_test.get("qty_date"),True)
             var_test['qty_date_for_check'] = ui.get_attribute(self._objects["product_new_quantity_date_stock"],"value")
              
             ui.click(self._objects['product_new_save'])
@@ -983,8 +984,8 @@ class catalogProductScreen():
                     Test.assert_equals(var_test.get("out_stock"), ui.get_attribute(("xpath","//div[@id=\"form_step3_out_of_stock\"]/div/label/input[@checked]"),"value"), "'out_stock variation' not matching", "'out_stock variation' is ok")
                     Test.assert_equals(var_test.get('qty_msg_stock'), ui.get_attribute(self._objects["product_new_quantity_in_stock"],"value"), "'qty_msg_stock' not matching", "'qty_msg_stock' is ok")
                     Test.assert_equals(var_test.get('qty_msg_unstock'), ui.get_attribute(self._objects["product_new_quantity_out_stock"],"value"), "'qty_msg_unstock' not matching", "'qty_msg_unstock' is ok")
-
-                    Test.assert_equals(var_test.get('qty_date_for_check'), ui.get_attribute(self._objects["product_new_quantity_date_stock"],"value"), "'qty_date' not matching", "'qty_date' is ok")
+                    if var_test.get('variation')=="":
+                        Test.assert_equals(var_test.get('qty_date_for_check'), ui.get_attribute(self._objects["product_new_quantity_date_stock"],"value"), "'qty_date' not matching", "'qty_date' is ok")
 
                     if var_test.get("new_type") != "2":
                         ui.click(self._objects['product_new_carrier_tab'])

@@ -269,7 +269,8 @@ def take_screenshot(filename='screenshot.png'):
 def upload_file(element,fileUpload,is_submit=False):
     """
     """
-    img_selected = os.path.abspath(os.curdir) + "\\datasets\\" + fileUpload
+    img_selected = os.path.abspath(os.curdir) + "/datasets/" + fileUpload
+    
     elem = find_element(element[0], element[1])
     Context().browser.execute_script('arguments[0].setAttribute("style", "")', elem)
     elem.send_keys(img_selected)

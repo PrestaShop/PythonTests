@@ -5,7 +5,7 @@
   "variables": 
 	[ 
 		{
-		"search_name":"Amazon",
+		"search_name":"Contact form",
 		"view":"grid"
 		}
 	] 
@@ -16,7 +16,7 @@
 	"variables": 
 		[ 
 			{
-			"search_name":"amazon",
+			"search_name":"Contact form",
 			"view":"grid"
 			}
 		] 
@@ -27,7 +27,7 @@
 	"variables": 
 		[ 
 			{
-			"search_name":"amazon",
+			"search_name":"Contact form",
 			"view":"grid"
 			}
 		] 
@@ -38,7 +38,7 @@
   "variables": 
 	[ 
 		{
-		"search_name":"Amazon",
+		"search_name":"Contact form",
 		"view":"list"
 		}
 	] 
@@ -49,7 +49,7 @@
 	"variables": 
 		[ 
 			{
-			"search_name":"amazon",
+			"search_name":"Contact form",
 			"view":"list"
 			}
 		] 
@@ -60,7 +60,7 @@
 	"variables": 
 		[ 
 			{
-			"search_name":"amazon",
+			"search_name":"Contact form",
 			"view":"list"
 			}
 		] 
