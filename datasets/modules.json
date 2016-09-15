@@ -1,68 +1,74 @@
-[{ 
-  "page":"admin_module_page",
-  "function": "search_module", 
-  "log": "Search a module",
-  "variables": 
-	[ 
-		{
-		"search_name":"Contact form",
-		"view":"grid"
-		}
-	] 
-},{
-    "page":"admin_module_page",
-	"function": "check_categorie", 
-	"log": "check a module",
-	"variables": 
-		[ 
+[
+	{
+		"page":"admin_module_page",
+		"function": "search_module",
+		"log": "Search a module",
+		"variables":
+		[
 			{
-			"search_name":"Contact form",
-			"view":"grid"
+				"search_name":"Contact form",
+				"view":"grid"
+			}
+		]
+	},
+	{
+		"page":"admin_module_page",
+		"function": "check_categorie",
+		"log": "check a module",
+		"variables":
+		[
+			{
+				"search_name":"Contact form",
+				"view":"grid"
+			}
+		]
+	},
+	{
+		"page":"admin_module_page",
+		"function": "sort_modules",
+		"log": "check a module",
+		"variables":
+		[
+			{
+				"search_name":"Contact form",
+				"view":"grid"
+			}
+		]
+	},
+	{
+	  	"page":"admin_module_page",
+	  	"function": "search_module",
+	  	"log": "Search a module",
+	  	"variables":
+		[
+			{
+				"search_name":"Contact form",
+				"view":"list"
+			}
+		]
+	},
+	{
+		"page":"admin_module_page",
+		"function": "check_categorie",
+		"log": "check a module",
+		"variables":
+		[
+			{
+				"search_name":"Contact form",
+				"view":"list"
 			}
 		] 
-},{
-    "page":"admin_module_page",
-	"function": "sort_modules", 
-	"log": "check a module",
-	"variables": 
-		[ 
+	},
+	{
+		"page":"admin_module_page",
+		"function": "sort_modules",
+		"log": "check a module",
+		"variables":
+		[
 			{
-			"search_name":"Contact form",
-			"view":"grid"
+				"search_name":"Contact form",
+				"view":"list"
 			}
-		] 
-},{ 
-  "page":"admin_module_page",
-  "function": "search_module", 
-  "log": "Search a module",
-  "variables": 
-	[ 
-		{
-		"search_name":"Contact form",
-		"view":"list"
-		}
-	] 
-},{
-    "page":"admin_module_page",
-	"function": "check_categorie", 
-	"log": "check a module",
-	"variables": 
-		[ 
-			{
-			"search_name":"Contact form",
-			"view":"list"
-			}
-		] 
-},{
-    "page":"admin_module_page",
-	"function": "sort_modules", 
-	"log": "check a module",
-	"variables": 
-		[ 
-			{
-			"search_name":"Contact form",
-			"view":"list"
-			}
-		] 
-}
+		]
+	}
 ]

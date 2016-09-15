@@ -22,10 +22,10 @@ def click(element, test=None):
         Context().logger.debug("Clicking on ({0})".format(element[1]))
     except:
         if test == None:
-            Context().logger.error("Cannot clicked on the element ({0})".format(element[1]))
+            Context().logger.error("Cannot click on the element ({0})".format(element[1]))
             take_screenshot("Exception.png")
         else:
-            Context().logger.debug("Cannot clicked on the element ({0})".format(element[1]))
+            Context().logger.debug("Cannot click on the element ({0})".format(element[1]))
         raise
 
 
@@ -57,7 +57,28 @@ def click_submenu(parent, element):
         elem.click()
         Context().logger.debug("Clicking on ({0})".format(element[1]))
     except:
-        Context().logger.error("Cannot clicked on the element ({0})".format(element[1]))
+        Context().logger.error("Cannot click on the element ({0})".format(element[1]))
+        take_screenshot("Exception.png")
+        raise
+
+def click_submenu_by_move(parent, element):
+    """
+    @summary: click on the sub-element specified of the parent specified
+    @param: parent: format of parent: ('method','identification'), e.g.: ("xpath","//[@id='login']") or ("css","#login")
+    @param: element: format of element: ('method','identification'), e.g.: ("xpath","//[@id='login']") or ("css","#login")
+    """
+    try:
+        parent_elem = find_element(parent[0], parent[1])
+        mov = ActionChains(Context().browser).move_to_element(parent_elem)
+        mov.perform()
+        time.sleep(3)
+        wait_until(element[1],120,1,element[0])
+        elem = find_element(element[0], element[1])
+        elem.click()
+        Context().logger.debug("Clicking on ({0})".format(element[1]))
+
+    except:
+        Context().logger.error("Cannot click on the element ({0})".format(element[1]))
         take_screenshot("Exception.png")
         raise
 
@@ -80,7 +101,7 @@ def set_text(element, value, clear=None):
             elem.send_keys(value)
             Context().logger.debug("Filled the element ({0}) with ({1})".format(element[1], value))
         except:
-            Context().logger.error("Cannot filled the element ({0}) with ({1})".format(element[1], value))
+            Context().logger.error("Cannot fill the element ({0}) with ({1})".format(element[1], value))
             take_screenshot("Exception.png")
             raise
 
@@ -97,7 +118,7 @@ def set_text_script(element, value):
             Context().browser.execute_script("arguments[0].value = '" + value + "';", elem)
             Context().logger.debug("Filled the element ({0}) with ({1})".format(element[1], value))
         except:
-            Context().logger.error("Cannot filled the element ({0}) with ({1})".format(element[1], value))
+            Context().logger.error("Cannot fill the element ({0}) with ({1})".format(element[1], value))
             take_screenshot("Exception.png")
             raise
 
@@ -113,7 +134,7 @@ def native_set_text(element, text):
             elem = find_element(element[0], element[1])
             elem.click()
         except:
-            Context().logger.error("Cannot clicked on the element ({0})".format(element[1]))
+            Context().logger.error("Cannot click on the element ({0})".format(element[1]))
             take_screenshot("Exception.png")
             raise
         stream = keyboard_stream(text)
@@ -122,7 +143,7 @@ def native_set_text(element, text):
                 SendInput(val)
             Context().logger.debug("Filled the element ({0}) with ({1})".format(element[1], text))
         except:
-            Context().logger.error("Cannot filled the element ({0}) with ({1})".format(element[1], text))
+            Context().logger.error("Cannot fill the element ({0}) with ({1})".format(element[1], text))
             take_screenshot("Exception.png")
 
 
@@ -141,7 +162,7 @@ def find_element(method, element, not_log=False):
         return elet
     except:
         if not_log == False:
-            Context().logger.error("cannot found the element ({0})".format(element))
+            Context().logger.error("Cannot find the element ({0})".format(element))
             take_screenshot("Exception.png")
         raise
 
@@ -189,7 +210,7 @@ def find_elements(method, element, not_log=False):
         return elet
     except:
         if not_log == False:
-            Context().logger.error("cannot found the element ({0})".format(element))
+            Context().logger.error("Cannot find the element ({0})".format(element))
             take_screenshot("Exception.png")
         raise
 
@@ -269,7 +290,7 @@ def choose_a_dd_value(element, desired_value):
                 Context().logger.debug("Clicking on ({0})".format(new_element))
                 return True
             except:
-                Context().logger.error("Cannot clicked on the element ({0})".format(element[1]))
+                Context().logger.error("Cannot click on the element ({0})".format(element[1]))
                 take_screenshot("Exception.png")
                 raise
 

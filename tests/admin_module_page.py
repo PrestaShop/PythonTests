@@ -42,7 +42,7 @@ class admin_module_page():
             time.sleep(3)
             
             try:
-                loginAdminPageScreen().disconnect()
+                loginAdminPageScreen().disconnect(product_page=False)
             except:
                 Context().logger.warning("Issue with log out")
                 raise
@@ -75,7 +75,7 @@ class admin_module_page():
             time.sleep(3)
             
             try:
-                loginAdminPageScreen().disconnect()
+                loginAdminPageScreen().disconnect(product_page=False)
             except:
                 Context().logger.warning("Issue with log out")
                 raise

@@ -45,9 +45,9 @@ class adminPageScreen():
 
             'Stats': ("css", "li#subtab-AdminStats"),
 
-            'Modules': ("css", "li#subtab-AdminParentModulesSf"),
-            'Modules_modules': ("css", "li#subtab-AdminModulesSf"),
-            'Modules_marketing': ("css", "li#subtab-AdminMarketing"),
+            'Modules': ("xpath", "//li[@id='subtab-AdminParentModulesSf']"),
+            'Modules_modules': ("xpath", "//li[@id='subtab-AdminModulesSf']"),
+            'Modules_marketing': ("xpath", "//li[@id='subtab-AdminMarketing']"),
 
             'Themes': ("css", "li#subtab-AdminThemes"),
             'Themes_themes': ("css", "li#subtab-AdminThemes"),
@@ -94,7 +94,7 @@ class adminPageScreen():
         if subEntry == False:
             ui.click(self._objects[entry])
         else:
-            ui.click_submenu(self._objects[entry], self._objects[subEntry])
+            ui.click_submenu_by_move(self._objects[entry], self._objects[subEntry])
 
     def open_all_contoller(self):
         f = open("datasets/controllers.txt", "r")

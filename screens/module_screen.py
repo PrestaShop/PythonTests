@@ -29,7 +29,7 @@ class ModuleScreen():
                         'cancel_search' : ("xpath","//i[@class=' material-icons']"),
                         'grid_view' : ("css","#module-sort-grid"),
                         'list_view' : ("css","#module-sort-list"),
-                        'rest_category_filter' : ("css",".module-category-reset"),
+                        'reset_category_filter' : ("css",".module-category-reset"),
                         'block_module_name' : ("xpath","(//div[@class='module-item-grid col-12 col-xl-3 col-lg-4 col-md-6 col-sm-12']//div[@class='text-ellipsis module-name-grid'])[1]"),
                         'opened_module_title' : ("xpath", "//div[@class='modal-header module-modal-header']/div/div/h4"),
                         'opened_module_author' : ("xpath","//div[@class='modal-header module-modal-header']/div/div/div"),
@@ -175,14 +175,14 @@ class ModuleScreen():
                     
                 def_module = ui.def_object(self._objects['installed_list_first_module'], i)
                 first_installed_module = ui.find_element(def_module[0],def_module[1])
-                
+
                 check_module = {}
                 check_module['data-name']=first_installed_module.get_attribute('data-name')
                 check_module['data-description']=first_installed_module.get_attribute('data-description')
                 check_module['data-author']=first_installed_module.get_attribute('data-author')
                 check_module['data-tech-name']=first_installed_module.get_attribute('data-tech-name')
-        
-        
+
+
                 ui.set_text(self._objects['search'], check_module.get('data-tech-name'))
                 my_elem = ui.find_element(self._objects['search'][0],self._objects['search'][1])
                 time.sleep(2)
@@ -240,16 +240,19 @@ class ModuleScreen():
                 nb_found=0
                 for modules_search in all_modules:
                     if modules_search[4] == cat.get_attribute('data-categories'):
-                        nb_found = nb_found +1 
-    
+                        nb_found = nb_found +1
+
                 if nb_found!=nb_result:
-                    Context().logger.error("Issue to find the right modules for the category: " + cat.get_attribute('data-categories') + ", nb result filtered = " + str(nb_result) + " and nb found module = " + str(nb_found))
+                    if cat.get_attribute('data-categories') == None :
+                        Context().logger.error("Cannot find the category")
+                    else:
+                        Context().logger.error("Issue to find the right modules for the category: " + cat.get_attribute('data-categories') + ", nb result filtered = " + str(nb_result) + " and nb found module = " + str(nb_found))
                 else:
                     total=total+nb_found
                 j=j+1   
              
             ui.click(self._objects['list_categories'])    
-            ui.click(self._objects['rest_category_filter'])
+            ui.click(self._objects['reset_category_filter'])
                          
             
             if total == nb_modules:
@@ -289,7 +292,10 @@ class ModuleScreen():
                         nb_found = nb_found +1 
     
                 if nb_found!=nb_result:
-                    Context().logger.error("Issue to find the right modules for the category: " + cat.get_attribute('data-categories') + ", nb result filtered = " + str(nb_result) + " and nb found module = " + str(nb_found))
+                    if cat.get_attribute('data-categories') == None:
+                        Context().logger.error("Cannot find the category")
+                    else:
+                        Context().logger.error("Issue to find the right modules for the category: " + cat.get_attribute('data-categories') + ", nb result filtered = " + str(nb_result) + " and nb found module = " + str(nb_found))
                 else:
                     total=total+nb_found
                 j=j+1   
