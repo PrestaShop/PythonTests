@@ -45,9 +45,9 @@ def main_function():
                             Context().launch_browser2(clean_session=True)
                         try:
                             if config.back == False:
-                                storename = ""
+                                storename = "/"
                                 if Configuration().storename != None:
-                                    storename = Configuration().storename
+                                    storename = Configuration().storename + storename
                                 if Configuration().vm == None:
                                     url = Context().environment.url.replace('str(i)', storename).replace('str(j)',
                                                                                                          'localhost/')

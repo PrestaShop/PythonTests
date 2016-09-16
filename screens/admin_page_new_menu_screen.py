@@ -94,13 +94,19 @@ class adminPageScreen():
         if subEntry == False:
             ui.click(self._objects[entry])
         else:
+            ui.click_submenu(self._objects[entry], self._objects[subEntry])
+
+    def go_to_admin_menu_by_move(self, entry, subEntry=False):
+        if subEntry == False:
+            ui.click(self._objects[entry])
+        else:
             ui.click_submenu_by_move(self._objects[entry], self._objects[subEntry])
 
     def open_all_contoller(self):
         f = open("datasets/controllers.txt", "r")
-        storename = ""
+        storename = "/"
         if Configuration().storename != None:
-            storename = Configuration().storename
+            storename = Configuration().storename + storename
 
         for l in f:
 

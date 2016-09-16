@@ -1,41 +1,42 @@
-[{ 
-  "page":"admin_catalog_page",
-  "function": "add_product", 
-  "log": "Validation creation new standard product",
-  "variables": 
-	[ 
-		{
-			"name":"AutoNewStandard",
-			"type":"virtual",
-			"new_type":"0",
-			"ref":"new product automate",
-			"ean13":"0123456789987",
-			"upc":"012345678901",
-			"resume":"nouveau automate",
-			"desc":"nouveau produit cree en automate",
-			"tags":"new,auto,standard",
-			"active":"yes",
-			"visibility":"search",
-			"condition":"refurbished",
-			"wholesale":"5",
-			"on_sale":"0",
-			"priceTE":"10",
-			"unit":"10",
-			"unity":"1",
-			"metatitle":"metatitle",
-			"metadesc":"metadesc",
-			"shortlink":"test_auto",
-			"picture":"1.png//2.jpg//3.jpg//4.gif//5.jpg//6.jpg",
-			"isbn":"1234567890123",
-			"new_category_name":"1",
-			"new_category_parent":"",
-			"product_category":"",
-			"tax_choosen_shortcut":"1",
-			"tax_rule":"4",
-			"redirection_page":"1",
-			"price_priority" : "id_shop//id_country//id_group//id_currency",
-			"price_priority_to_all" : "",
-			"features":
+[
+	{
+		"page":"admin_catalog_page",
+	  	"function": "add_product",
+	  	"log": "Validation creation new standard product",
+	  	"variables":
+		[
+			{
+				"name":"AutoNewStandard",
+				"type":"virtual",
+				"new_type":"0",
+				"ref":"new product automate",
+				"ean13":"0123456789987",
+				"upc":"012345678901",
+				"resume":"nouveau automate",
+				"desc":"nouveau produit cree en automate",
+				"tags":"new,auto,standard",
+				"active":"yes",
+				"visibility":"search",
+				"condition":"refurbished",
+				"wholesale":"5",
+				"on_sale":"0",
+				"priceTE":"10",
+				"unit":"10",
+				"unity":"1",
+				"metatitle":"metatitle",
+				"metadesc":"metadesc",
+				"shortlink":"test_auto",
+				"picture":"1.png//2.jpg//3.jpg//4.gif//5.jpg//6.jpg",
+				"isbn":"1234567890123",
+				"new_category_name":"1",
+				"new_category_parent":"",
+				"product_category":"",
+				"tax_choosen_shortcut":"1",
+				"tax_rule":"4",
+				"redirection_page":"1",
+				"price_priority" : "id_shop//id_country//id_group//id_currency",
+				"price_priority_to_all" : "",
+				"features":
 				[
 					{
 						"feature":"1",
@@ -73,16 +74,16 @@
 						"value": "18"
 					}
 				],
-			"ad_price":"0",
-			"ad_quantity":"0",
-			"qty_manuel":"",
-			"quantity":"10",
-			"out_stock":"0",
-			"qty_min":"1",
-			"qty_msg_stock":"Product avalaible",
-			"qty_msg_unstock":"Product unavalaible",
-			"qty_date":"#now[%Y-%m-%d]+30d#",
-			"variation": 
+				"ad_price":"0",
+				"ad_quantity":"0",
+				"qty_manuel":"",
+				"quantity":"10",
+				"out_stock":"0",
+				"qty_min":"1",
+				"qty_msg_stock":"Product avalaible",
+				"qty_msg_unstock":"Product unavalaible",
+				"qty_date":"#now[%Y-%m-%d]+30d#",
+				"variation":
 				[
 					{
 						"compose":"Size : S//Color : Grey",
@@ -131,21 +132,21 @@
 						"supplier_product_price_currency":"1"
 					}
 				],
-			"cwidth":"10",
-			"cheight":"10",
-			"cdepth":"10",
-			"cweight":"2",
-			"cadd_ship_coast":"5",
-			"carrier":"Delivery",
-			"avalaible_orders":"1",
-			"show_price":"1",
-			"online_only":"1",
-			"options_suppliers":"0",
-			"default_supplier":"1",
-			"supplier_reference":"ref_supplier",
-			"product_price":"10",
-			"price_currency":"1",
-			"virtual_file":
+				"cwidth":"10",
+				"cheight":"10",
+				"cdepth":"10",
+				"cweight":"2",
+				"cadd_ship_coast":"5",
+				"carrier":"Delivery",
+				"avalaible_orders":"1",
+				"show_price":"1",
+				"online_only":"1",
+				"options_suppliers":"0",
+				"default_supplier":"1",
+				"supplier_reference":"ref_supplier",
+				"product_price":"10",
+				"price_currency":"1",
+				"virtual_file":
 				[
 					{
 						"virtual_file":"rouge.png",
@@ -155,14 +156,14 @@
 						"file_nb_days":"10"
 					}
 				],
-			"pack":
+				"pack":
 				[
 					{
 						"search":"",
 						"quantity":""
 					}
 				],
-			"specific_price":
+				"specific_price":
 				[
 					{
 						"shop":"1",
@@ -180,7 +181,7 @@
 						"reduction_tax":"0"
 					}
 				],
-			"document_attach":
+				"document_attach":
 				[
 					{
 						"file":"bleue.jpg",
@@ -188,7 +189,7 @@
 						"desc":"jpg of bleue"
 					}
 				],
-			"personalization":
+				"personalization":
 				[
 					{
 						"name":"perso_text",
@@ -201,74 +202,74 @@
 						"mandatory":"0"
 					}
 				],
-			"search_related_products":"Printed Dress (ref: demo_3)//Printed Summer Dress (ref: demo_5)",
-			"manufacturer":"1"
-		}
-	] 
-},
-{ 
-  "page":"admin_catalog_page",
-  "function": "add_product", 
-  "log": "Validation creation new pack product",
-  "variables": 
-	[ 
-		{
-			"name":"AutoNewPack",
-			"type":"virtual",
-			"new_type":"1",
-			"ref":"new product automate",
-			"ean13":"0123456789987",
-			"upc":"012345678901",
-			"resume":"nouveau automate",
-			"desc":"nouveau produit cree en automate",
-			"tags":"new,auto,standard",
-			"active":"yes",
-			"visibility":"search",
-			"condition":"refurbished",
-			"wholesale":"5",
-			"on_sale":"0",
-			"priceTE":"10",
-			"unit":"10",
-			"unity":"1",
-			"metatitle":"metatitle",
-			"metadesc":"metadesc",
-			"shortlink":"test_auto",
-			"picture":"1.png",
-			"isbn":"1234567890123",
-			"new_category_name":"1",
-			"new_category_parent":"",
-			"product_category":"",
-			"tax_choosen_shortcut":"0",
-			"tax_rule":"4",
-			"redirection_page":"1",
-			"price_priority" : "id_shop//id_country//id_group//id_currency",
-			"price_priority_to_all" : "",
-			"features":"",
-			"ad_price":"0",
-			"ad_quantity":"0",
-			"qty_manuel":"",
-			"quantity":"10",
-			"out_stock":"0",
-			"qty_min":"1",
-			"qty_msg_stock":"Product avalaible",
-			"qty_msg_unstock":"Product unavalaible",
-			"qty_date":"#now[%Y-%m-%d]+30d#",
-			"variation":"",
-			"cwidth":"10",
-			"cheight":"10",
-			"cdepth":"10",
-			"cweight":"2",
-			"cadd_ship_coast":"5",
-			"carrier":"Delivery",
-			"avalaible_orders":"1",
-			"show_price":"1",
-			"online_only":"1",
-			"options_suppliers":"0",
-			"default_supplier":"1",
-			"supplier_reference":"ref_supplier",
-			"product_price":"10",
-			"price_currency":"1",
-			"virtual_file":
+				"search_related_products":"Printed Dress (ref: demo_3)//Printed Summer Dress (ref: demo_5)",
+				"manufacturer":"1"
+			}
+		]
+	},
+	{
+  		"page":"admin_catalog_page",
+  		"function": "add_product",
+  		"log": "Validation creation new pack product",
+  		"variables":
+		[
+			{
+				"name":"AutoNewPack",
+				"type":"virtual",
+				"new_type":"1",
+				"ref":"new product automate",
+				"ean13":"0123456789987",
+				"upc":"012345678901",
+				"resume":"nouveau automate",
+				"desc":"nouveau produit cree en automate",
+				"tags":"new,auto,standard",
+				"active":"yes",
+				"visibility":"search",
+				"condition":"refurbished",
+				"wholesale":"5",
+				"on_sale":"0",
+				"priceTE":"10",
+				"unit":"10",
+				"unity":"1",
+				"metatitle":"metatitle",
+				"metadesc":"metadesc",
+				"shortlink":"test_auto",
+				"picture":"1.png",
+				"isbn":"1234567890123",
+				"new_category_name":"1",
+				"new_category_parent":"",
+				"product_category":"",
+				"tax_choosen_shortcut":"0",
+				"tax_rule":"4",
+				"redirection_page":"1",
+				"price_priority" : "id_shop//id_country//id_group//id_currency",
+				"price_priority_to_all" : "",
+				"features":"",
+				"ad_price":"0",
+				"ad_quantity":"0",
+				"qty_manuel":"",
+				"quantity":"10",
+				"out_stock":"0",
+				"qty_min":"1",
+				"qty_msg_stock":"Product avalaible",
+				"qty_msg_unstock":"Product unavalaible",
+				"qty_date":"#now[%Y-%m-%d]+30d#",
+				"variation":"",
+				"cwidth":"10",
+				"cheight":"10",
+				"cdepth":"10",
+				"cweight":"2",
+				"cadd_ship_coast":"5",
+				"carrier":"Delivery",
+				"avalaible_orders":"1",
+				"show_price":"1",
+				"online_only":"1",
+				"options_suppliers":"0",
+				"default_supplier":"1",
+				"supplier_reference":"ref_supplier",
+				"product_price":"10",
+				"price_currency":"1",
+				"virtual_file":
 				[
 					{
 						"virtual_file":"rouge.png",
@@ -278,7 +279,7 @@
 						"file_nb_days":"10"
 					}
 				],
-			"pack":
+				"pack":
 				[
 					{
 						"search":"Printed Dress",
@@ -289,7 +290,7 @@
 						"quantity":"3"
 					}
 				],
-			"specific_price":
+				"specific_price":
 				[
 					{
 						"shop":"1",
@@ -307,7 +308,7 @@
 						"reduction_tax":"0"
 					}
 				],
-			"document_attach":
+				"document_attach":
 				[
 					{
 						"file":"bleue.jpg",
@@ -315,7 +316,7 @@
 						"desc":"jpg of bleue"
 					}
 				],
-			"personalization":
+				"personalization":
 				[
 					{
 						"name":"perso_text",
@@ -328,75 +329,75 @@
 						"mandatory":"0"
 					}
 				],
-			"search_related_products":"Printed Dress (ref: demo_3)//Printed Summer Dress (ref: demo_5)",
-			"manufacturer":"1",
-			"quantity_pack":"2"
-		}
-	] 
-},
-{ 
-  "page":"admin_catalog_page",
-  "function": "add_product", 
-  "log": "Validation creation new virtual product",
-  "variables": 
-	[ 
-		{
-			"name":"AutoNewVirtual",
-			"type":"virtual",
-			"new_type":"2",
-			"ref":"new product automate",
-			"ean13":"0123456789987",
-			"upc":"012345678901",
-			"resume":"nouveau automate",
-			"desc":"nouveau produit cree en automate",
-			"tags":"new,auto,standard",
-			"active":"yes",
-			"visibility":"search",
-			"condition":"refurbished",
-			"wholesale":"5",
-			"on_sale":"0",
-			"priceTE":"10",
-			"unit":"10",
-			"unity":"1",
-			"metatitle":"metatitle",
-			"metadesc":"metadesc",
-			"shortlink":"test_auto",
-			"picture":"1.png",
-			"isbn":"1234567890123",
-			"new_category_name":"1",
-			"new_category_parent":"",
-			"tax_choosen_shortcut":"0",
-			"tax_rule":"4",
-			"redirection_page":"1",
-			"product_category":"",
-			"price_priority" : "id_shop//id_country//id_group//id_currency",
-			"price_priority_to_all" : "",
-			"features":"",
-			"ad_quantity":"0",
-			"ad_price":"0",
-			"qty_manuel":"",
-			"quantity":"10",
-			"out_stock":"0",
-			"qty_min":"1",
-			"qty_msg_stock":"Product avalaible",
-			"qty_msg_unstock":"Product unavalaible",
-			"qty_date":"#now[%Y-%m-%d]+30d#",
-			"variation":"",
-			"cwidth":"10",
-			"cheight":"10",
-			"cdepth":"10",
-			"cweight":"2",
-			"cadd_ship_coast":"5",
-			"carrier":"Delivery",
-			"avalaible_orders":"1",
-			"show_price":"1",
-			"online_only":"1",
-			"options_suppliers":"0",
-			"default_supplier":"1",
-			"supplier_reference":"ref_supplier",
-			"product_price":"10",
-			"price_currency":"1",
-			"virtual_file":
+				"search_related_products":"Printed Dress (ref: demo_3)//Printed Summer Dress (ref: demo_5)",
+				"manufacturer":"1",
+				"quantity_pack":"2"
+			}
+		]
+	},
+	{
+	  	"page":"admin_catalog_page",
+	  	"function": "add_product",
+	  	"log": "Validation creation new virtual product",
+	  	"variables":
+		[
+			{
+				"name":"AutoNewVirtual",
+				"type":"virtual",
+				"new_type":"2",
+				"ref":"new product automate",
+				"ean13":"0123456789987",
+				"upc":"012345678901",
+				"resume":"nouveau automate",
+				"desc":"nouveau produit cree en automate",
+				"tags":"new,auto,standard",
+				"active":"yes",
+				"visibility":"search",
+				"condition":"refurbished",
+				"wholesale":"5",
+				"on_sale":"0",
+				"priceTE":"10",
+				"unit":"10",
+				"unity":"1",
+				"metatitle":"metatitle",
+				"metadesc":"metadesc",
+				"shortlink":"test_auto",
+				"picture":"1.png",
+				"isbn":"1234567890123",
+				"new_category_name":"1",
+				"new_category_parent":"",
+				"tax_choosen_shortcut":"0",
+				"tax_rule":"4",
+				"redirection_page":"1",
+				"product_category":"",
+				"price_priority" : "id_shop//id_country//id_group//id_currency",
+				"price_priority_to_all" : "",
+				"features":"",
+				"ad_quantity":"0",
+				"ad_price":"0",
+				"qty_manuel":"",
+				"quantity":"10",
+				"out_stock":"0",
+				"qty_min":"1",
+				"qty_msg_stock":"Product avalaible",
+				"qty_msg_unstock":"Product unavalaible",
+				"qty_date":"#now[%Y-%m-%d]+30d#",
+				"variation":"",
+				"cwidth":"10",
+				"cheight":"10",
+				"cdepth":"10",
+				"cweight":"2",
+				"cadd_ship_coast":"5",
+				"carrier":"Delivery",
+				"avalaible_orders":"1",
+				"show_price":"1",
+				"online_only":"1",
+				"options_suppliers":"0",
+				"default_supplier":"1",
+				"supplier_reference":"ref_supplier",
+				"product_price":"10",
+				"price_currency":"1",
+				"virtual_file":
 				[
 					{
 						"virtual_file":"rouge.png",
@@ -406,14 +407,14 @@
 						"file_nb_days":"10"
 					}
 				],
-			"pack":
+				"pack":
 				[
 					{
 						"search":"",
 						"quantity":""
 					}
 				],
-			"specific_price":
+				"specific_price":
 				[
 					{
 						"shop":"1",
@@ -431,7 +432,7 @@
 						"reduction_tax":"0"
 					}
 				],
-			"document_attach":
+				"document_attach":
 				[
 					{
 						"file":"bleue.jpg",
@@ -439,7 +440,7 @@
 						"desc":"jpg of bleue"
 					}
 				],
-			"personalization":
+				"personalization":
 				[
 					{
 						"name":"perso_text",
@@ -452,20 +453,21 @@
 						"mandatory":"0"
 					}
 				],
-			"search_related_products":"Printed Dress (ref: demo_3)//Printed Summer Dress (ref: demo_5)",
-			"manufacturer":"1"
-		}
-	] 
-},
-{ 
-  "page":"admin_catalog_page",
-  "function": "product_catalog_sort", 
-  "log": "Validation catalog page",
-  "variables": 
-	[ 
-		{
-		"col_search" : "id_product||1//name||3//reference||4"
-		}
-	] 
-}]
+				"search_related_products":"Printed Dress (ref: demo_3)//Printed Summer Dress (ref: demo_5)",
+				"manufacturer":"1"
+			}
+		]
+	},
+	{
+  		"page":"admin_catalog_page",
+  		"function": "product_catalog_sort",
+  		"log": "Validation catalog page",
+  		"variables":
+		[
+			{
+				"col_search" : "id_product||1//name||3//reference||4"
+			}
+		]
+	}
+]
 

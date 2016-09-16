@@ -57,7 +57,7 @@ class admin_module_page():
             loginAdminPageScreen().connect(Context().environment.login, Context().environment.password)
             time.sleep(3)
             try:
-                adminPageScreen().go_to_admin_menu('Modules','Modules_modules')
+                adminPageScreen().go_to_admin_menu_by_move('Modules','Modules_modules')
                 Context().logger.info("Go on modules - modules menu")
             except:
                 Context().logger.warning("Issue to go on modules - modules  menu")
@@ -89,7 +89,7 @@ class admin_module_page():
             loginAdminPageScreen().connect(Context().environment.login, Context().environment.password)
             time.sleep(3)
             try:
-                adminPageScreen().go_to_admin_menu('Modules','Modules_modules')
+                adminPageScreen().go_to_admin_menu_by_move('Modules','Modules_modules')
                 Context().logger.info("Go on modules - modules menu")
             except:
                 Context().logger.warning("Issue to go on modules - modules  menu")
@@ -107,7 +107,7 @@ class admin_module_page():
             time.sleep(3)
             
             try:
-                loginAdminPageScreen().disconnect()
+                loginAdminPageScreen().disconnect(product_page=False)
             except:
                 Context().logger.warning("Issue with log out")
                 raise

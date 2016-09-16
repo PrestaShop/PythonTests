@@ -65,15 +65,13 @@ class admin_catalog_page():
                 Context().logger.warning("Issue to add the new product")
             time.sleep(5)
             try:
-                loginAdminPageScreen().disconnect()
+                loginAdminPageScreen().disconnect(product_page=False)
             except:
                 Context().logger.warning("Issue with log out")
                 raise
             return new_product
         except:
             raise
-        
-        
         
     def product_catalog_sort(self,var_test):
         new_product = False
@@ -89,13 +87,13 @@ class admin_catalog_page():
             time.sleep(3)
             try:
                 new_product = catalogProductScreen().product_catalog_sort(var_test)
-                Context().logger.info("the new product has been added")
+                Context().logger.info("the catalog has been checked")
             except:
-                Context().logger.warning("Issue to add the new product")
+                Context().logger.warning("Issue to check the category")
                 raise
             time.sleep(3)
             try:
-                loginAdminPageScreen().disconnect()
+                loginAdminPageScreen().disconnect(product_page=False)
             except:
                 Context().logger.warning("Issue with log out")
                 raise

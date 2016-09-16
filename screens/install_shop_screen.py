@@ -51,9 +51,12 @@ class installationScreen():
 
         if Configuration().git == False:
             try:
+                print(Context().environment.store_source.strip() + Configuration().version_presta)
+                print(Context().environment.store_source.strip() + my_version)
                 Context().logger.info("Creating folder ({0})".format(my_version))
                 shutil.copytree(Context().environment.store_source.strip() + Configuration().version_presta,
                                 Context().environment.store_source.strip() + my_version)
+
                 Context().logger.info("Folder was created")
             except WindowsError:
                 Context().logger.error("Issue to duplicate the folder")
@@ -71,13 +74,13 @@ class installationScreen():
 
         Context().launch_browser2(clean_session=True)
         my_url = "http://str(j)str(i)/install-dev/index.php"
-        storename = ""
+        storename = "/"
         if Configuration().storename != None:
-            storename = Configuration().storename
+            storename = Configuration().storename + storename
         if Configuration().vm == None:
-            url = my_url.replace('str(i)', storename).replace('str(j)', 'localhost')
+            url = my_url.replace('str(i)', storename).replace('str(j)', 'localhost/')
         else:
-            url = my_url.replace('str(i)', storename).replace('str(j)', Configuration().vm)
+            url = my_url.replace('str(i)', storename).replace('str(j)', Configuration().vm + '/')
 
         Context().goto_url(url)
         lang = ui.def_object(self._objects['langue'], var_test.get("langue"))
@@ -172,9 +175,9 @@ class installationScreen():
             try:
                 Context().browser.close()
                 Context().launch_browser2(clean_session=True)
-                storename = ""
+                storename = "/"
                 if Configuration().storename != None:
-                    storename = Configuration().storename
+                    storename = Configuration().storename +storename
                 if Configuration().vm == None:
                     url = Context().environment.url.replace('str(i)', storename).replace('str(j)', 'localhost/')
                 else:
@@ -199,13 +202,13 @@ class installationScreen():
         reinstall_ok = False
         Context().launch_browser2(clean_session=True)
         my_url = "http://str(j)str(i)/install-dev/index.php"
-        storename = ""
+        storename = "/"
         if Configuration().storename != None:
-            storename = Configuration().storename
+            storename = Configuration().storename + storename
         if Configuration().vm == None:
-            url = my_url.replace('str(i)', storename).replace('str(j)', 'localhost')
+            url = my_url.replace('str(i)', storename).replace('str(j)', 'localhost/')
         else:
-            url = my_url.replace('str(i)', storename).replace('str(j)', Configuration().vm)
+            url = my_url.replace('str(i)', storename).replace('str(j)', Configuration().vm + '/')
 
         Context().goto_url(url)
         time.sleep(2)

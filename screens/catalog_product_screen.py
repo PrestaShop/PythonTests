@@ -358,7 +358,7 @@ class catalogProductScreen():
 
                 'product_new_variation_line_quantity': (
                 "xpath", "(//td[@class=\"attribute-quantity\"]/div/input)[str(i)]"),
-                "related_product_info": ("xpath", "(//ul[@id=\"form_step1_related_products-data\"])/li[str(i)]/span"),
+                "related_product_info": ("xpath", "(//ul[@id=\"form_step1_related_products-data\"])/li[str(i)]//span"),
                 'feature_selected': ("xpath", "//select[@id=\"form_step1_features_str(i)_feature\"]/option[@selected]"),
                 'feature_value': ("xpath", "//select[@id=\"form_step1_features_str(i)_value\"]/option[@selected]"),
                 'feature_custom_value': ("xpath", "//input[@id=\"form_step1_features_str(i)_custom_value_1\"]"),
@@ -567,8 +567,7 @@ class catalogProductScreen():
                 my_cat = (Context().browser.name + str(false_random)).replace(" ", "")
                 ui.set_text(self._objects['product_new_info_new_category_name'], my_cat, True)
             else:
-                ui.set_text(self._objects['product_new_info_new_category_name'], var_test.get('new_category_name'),
-                            True)
+                ui.set_text(self._objects['product_new_info_new_category_name'], var_test.get('new_category_name'), True)
             ui.click(self._objects['product_new_info_new_category_save'])
             ui.click(self._objects['product_new_info_category_expand'])
             time.sleep(2)
