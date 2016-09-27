@@ -51,8 +51,6 @@ class installationScreen():
 
         if Configuration().git == False:
             try:
-                print(Context().environment.store_source.strip() + Configuration().version_presta)
-                print(Context().environment.store_source.strip() + my_version)
                 Context().logger.info("Creating folder ({0})".format(my_version))
                 shutil.copytree(Context().environment.store_source.strip() + Configuration().version_presta,
                                 Context().environment.store_source.strip() + my_version)

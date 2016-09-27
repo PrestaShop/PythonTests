@@ -170,7 +170,7 @@ class ModuleScreen():
             #Go to installed modules and make a search
             try:
                 ui.click(self._objects['tab_installed_modules'])
-                
+
                 i=1
                     
                 def_module = ui.def_object(self._objects['installed_list_first_module'], i)

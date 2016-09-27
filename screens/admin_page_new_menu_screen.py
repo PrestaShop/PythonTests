@@ -18,7 +18,7 @@ class adminPageScreen():
             'Orders_carts': ("css", "li#subtab-AdminCarts"),
 
             'Catalog': ("css", "li#subtab-AdminCatalog"),
-            'Catalog_products': ("xpath", "//li[contains(@class,\"link-leveltwo\")]/a[contains(text(),\"Products\")]"),
+            'Catalog_products': ("xpath", "//li[contains(@id,\"subtab-AdminProducts\")]/a[contains(text(),\"Products\")]"),
             'Catalog_categories': ("css", "li#subtab-AdminCategories"),
             'Catalog_tracking': ("css", "li#subtab-AdminTracking"),
             'Catalog_attributesGroups': ("css", "li#subtab-AdminParentAttributesGroups"),

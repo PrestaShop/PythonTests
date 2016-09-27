@@ -52,7 +52,7 @@ class admin_catalog_page():
             loginAdminPageScreen().connect(Context().environment.login, Context().environment.password)
             time.sleep(3)
             try:
-                adminPageScreen().go_to_admin_menu('Catalog','Catalog_products')
+                adminPageScreen().go_to_admin_menu_by_move('Catalog','Catalog_products')
                 Context().logger.info("Go on catalog - products menu")
             except:
                 Context().logger.warning("Issue to go on catalog - products menu")
