@@ -168,6 +168,11 @@ def find_element(method, element, not_log=False):
 
 
 def is_existant(element):
+    """
+    @summary: check if an element exists from the method and element's information given in the parameter of the function
+    @param: method: xpath or css
+    @param: element: format of element, e.g.: "//[@id='login']" or "#login"
+    """
     try:
         elet = ""
         if element[0] == "xpath":
@@ -180,6 +185,11 @@ def is_existant(element):
 
 
 def is_visible(element):
+    """
+    @summary: check if an element exists and is visible from the method and element's information given in the parameter of the function
+    @param: method: xpath or css
+    @param: element: format of element, e.g.: "//[@id='login']" or "#login"
+    """
     try:
         elet = ""
         if element[0] == "xpath":

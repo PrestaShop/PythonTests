@@ -25,6 +25,7 @@ class catalogProductScreen():
                 'btn_upload_file': ("css", "#file-add-button"),
                 'file_list': ("css", "#file-files-list"),
                 'product_add_product': ("css", "#page-header-desc-product-new_product"),
+                'product_new_info_type': ("xpath", "//div[@id='product-informations']/div[@class='form-group']/div[@class='col-lg-9']/div[str(i)]/label/input"),
                 'product_new_informations': ("css", "#link-Informations"),
                 'product_new_info_type_simple': ("css", "#simple_product"),
                 'product_new_info_type_pack': ("css", "#pack_product"),
@@ -38,8 +39,8 @@ class catalogProductScreen():
                 'product_new_info_available': ("css", "#available_for_order"),
                 'product_new_info_show_price': ("css", "#show_price"),
                 'product_new_info_online_only': ("css", "#online_only"),
-                'product_new_info_resume': ("xpath", "//*[@id='mce_54']//iframe"),
-                'product_new_info_desc': ("xpath", "//*[@id='mce_94']//iframe"),
+                'product_new_info_resume_document': ("xpath", "//*[@id=\"description_short_1\"]"),
+                'product_new_info_desc_document': ("xpath", "//*[@id=\"description_1\"]"),
                 'product_new_info_tags': ("css", ".tagify-container input"),
                 'product_new_visibility': ("xpath", "//*[@id=\"visibility\"]//option[@value='str(i)']"),
                 'product_new_condition': ("xpath", "//*[@id=\"condition\"]//option[@value='str(i)']"),
@@ -73,8 +74,7 @@ class catalogProductScreen():
                 'product_add_product': ("css", "#page-header-desc-configuration-add"),
 
                 'product_new_informations': ("xpath", "//a[@href='#step1']"),
-                'product_new_info_type': (
-                "xpath", "//select[@id=\"form_step1_type_product\"]//option[@value='str(i)']"),
+                'product_new_info_type': ("xpath", "//select[@id=\"form_step1_type_product\"]//option[@value='str(i)']"),
                 'product_new_info_name': ("css", "#form_step1_name_1"),
                 'porduct_new_save_for_pictures': ("xpath", "//button[@class='btn btn-xs btn-primary']"),
                 'product_new_info_ref': ("css", "#form_step6_reference"),
@@ -212,7 +212,7 @@ class catalogProductScreen():
                 'product_new_options_online_only': ("css", "input#form_step6_display_options_online_only"),
                 'product_new_options_suppliers': ("css", "input#form_step6_suppliers_0"),
                 'product_new_options_default_supplier': (
-                "xpath", "//select[@id=\"form_step6_default_supplier\"]//option[str(i)]"),
+                "xpath", "//input[@id=\"form_step6_default_supplier_0\"]"),
                 'product_new_options_supplier_reference': (
                 "css", "#form_step6_supplier_combination_1_str(i)_supplier_reference"),
                 'product_new_supplier_name_product': (
@@ -274,6 +274,7 @@ class catalogProductScreen():
                 "xpath", "//*[@id=\"form_step2_specific_price_sp_reduction_tax\"]//option[@value=str(i)]"),
                 'product_new_specific_price_save': ("css", "#form_step2_specific_price_save"),
 
+                'product_new_document_attach_file_button': ("xpath", "//a[@class='btn btn-action add m-b-1']"),
                 'product_new_document_attach_file': ("css", "#form_step6_attachment_product_file"),
                 'product_new_document_attach_name': ("css", "#form_step6_attachment_product_name"),
                 'product_new_document_attach_desc': ("css", "#form_step6_attachment_product_description"),
@@ -301,7 +302,7 @@ class catalogProductScreen():
                 'product_new_activate_variation': ("xpath", "//input[@name=\"show_variations\" and @value=str(i)]"),
 
                 'product_new_upload_img': ("xpath", "(//input[@type='file'])[3]"),
-                'product_new_file_associate': ("xpath", "(//input[@type='file'])[2]"),
+                'product_new_file_associate': ("xpath", "(//input[@id='form_step6_attachment_product_file'])"),
                 'product_new_virtual_file': ("xpath", "(//input[@type='file'])[1]"),
 
                 # Catalog page
@@ -364,7 +365,7 @@ class catalogProductScreen():
                 'feature_custom_value': ("xpath", "//input[@id=\"form_step1_features_str(i)_custom_value_1\"]"),
                 'new_product_visibility_check': ("xpath", "//select[@id=\"form_step6_visibility\"]//option[@selected]"),
                 'new_product_default_supplier_check': (
-                "xpath", "//select[@id=\"form_step6_default_supplier\"]//option[@selected]"),
+                "xpath", "//input[@id=\"form_step6_default_supplier_0\"]"),
                 'product_new_options_price_currency_check': ("xpath",
                                                              "//select[@id=\"form_step6_supplier_combination_1_str(i)_product_price_currency\"]//option[@selected]"),
                 'product_tax_rules_listbox_shortcut': ("css", "#select2-step2_id_tax_rules_group_rendered-container"),
@@ -392,42 +393,49 @@ class catalogProductScreen():
 
     def add_product(self, var_test):
         new_product = False
+
         if '1.6' in Configuration().version_presta:
-            if ui.get_text(self._objects['product_table_number']) == "1":
-                max_id = ui.get_text(self._objects['product_table_check']).split(" ")[0]
-            else:
-                ui.click(self._objects['product_table_id_desc'])
-                max_id = ui.get_text(self._objects['product_table_check']).split(" ")[0]
+
+            ui.click(self._objects['product_table_id_desc'])
+            time.sleep(3)
+            max_id = ui.get_text(self._objects['product_table_check']).split(" ")[0]
             ui.click(self._objects['product_add_product'])
 
-            # Fill the Informations part of the product
-            if var_test.get("type") == "simple":
-                ui.click(self._objects['product_new_info_type_simple'])
-            if var_test.get("type") == "pack":
-                ui.click(self._objects['product_new_info_type_pack'])
-            if var_test.get("type") == "virtual":
-                ui.click(self._objects['product_new_info_type_virtual'])
-            ui.set_text(self._objects['product_new_info_name'], var_test.get("name"))
+            false_random = int(max_id) + 1
+
+            ### Fill the Informations part of the product
+            product_type = ui.def_object(self._objects['product_new_info_type'], str(int(var_test.get("new_type")) + 1))
+            ui.click(product_type)
+
+            product_name = (Context().browser.name + str(false_random) + var_test.get("name")).replace(" ", "")
+            ui.set_text(self._objects['product_new_info_name'], product_name, True)
+            var_test['product_name'] = product_name
+            var_test['old_max_id'] = max_id
+            #time.sleep(20)
             ui.set_text(self._objects['product_new_info_ref'], var_test.get("ref"))
             ui.set_text(self._objects['product_new_info_ean13'], var_test.get("ean13"))
             ui.set_text(self._objects['product_new_info_upc'], var_test.get("upc"))
 
             if var_test.get("active") == "yes":
                 ui.click(self._objects['product_new_info_on'])
+                var_test["active_yes"] = "true"
             if var_test.get("active") == "no":
                 ui.click(self._objects['product_new_info_off'])
+            var_test["active_yes"] = None
 
-            ui.set_text(self._objects['product_new_info_resume'], var_test.get("resume"))
-            ui.set_text(self._objects['product_new_info_desc'], var_test.get("desc"))
-            ui.set_text(self._objects['product_new_info_tags'], var_test.get("tags").replace('"', ''))
             visibility = ui.def_object(self._objects['product_new_visibility'], var_test.get("visibility"))
             ui.click(visibility)
             condition = ui.def_object(self._objects['product_new_condition'], var_test.get("condition"))
             ui.click(condition)
 
+            ui.set_text(self._objects['product_new_info_resume_document'], var_test.get("resume"))
+            ui.set_text(self._objects['product_new_info_desc_document'], var_test.get("desc"))
+
+            ui.set_text(self._objects['product_new_info_tags'], var_test.get("tags").replace('"', ''))
+
             ui.click(self._objects['product_new_save_stay'])
 
-            # Fill the Prices part of the product
+            ### Fill the Prices part of the product
             ui.click(self._objects['product_new_prices'])
             ui.wait_until(self._objects['product_new_wholesale'][1], 60, 0.25,
                           self._objects['product_new_wholesale'][0])
@@ -446,7 +454,7 @@ class catalogProductScreen():
             ui.set_text(self._objects['product_new_Seo_meta_desc'], var_test.get("metadesc"), True)
             if var_test.get("shortlink") != "": ui.set_text(self._objects['product_new_Seo_short_link'],
                                                             var_test.get("shortlink"), True)
-
+            return True
         if '1.7' in Configuration().version_presta or '17' in Configuration().version_presta:
 
             ui.click(self._objects['product_table_id_desc'])
@@ -546,14 +554,13 @@ class catalogProductScreen():
                                                                                                "(//div[@class='dz-preview dz-image-preview ui-sortable-handle dz-complete'])[" + str(
                                                                                                    nb_img) + "]"),
                                                                                               "data-id")
-
                 var_test['nb_img'] = nb_img
                 source = ui.find_element("xpath", "//div[@data-id='" + img_data_id[nb_img - 1] + "']")
                 x = ui.find_element("xpath", "//div[@data-id='" + img_data_id[0] + "']").location['x'] - \
                     ui.find_element("xpath", "//div[@data-id='" + img_data_id[nb_img - 1] + "']").location['x'] - 10
                 y = ui.find_element("xpath", "//div[@data-id='" + img_data_id[0] + "']").location['y'] - \
                     ui.find_element("xpath", "//div[@data-id='" + img_data_id[nb_img - 1] + "']").location['y'] - 10
-                ui.drag_and_drop(source, x, y)
+                #ui.drag_and_drop(source, x, y)
             else:
                 time.sleep(3)
                 ui.upload_file(self._objects['product_new_upload_img'], var_test.get("picture"))
@@ -563,6 +570,8 @@ class catalogProductScreen():
                     "data-id")
             #
             ui.click(self._objects['product_open_category'])
+
+
             if var_test.get('new_category_name') == "1":
                 my_cat = (Context().browser.name + str(false_random)).replace(" ", "")
                 ui.set_text(self._objects['product_new_info_new_category_name'], my_cat, True)
@@ -699,6 +708,7 @@ class catalogProductScreen():
                 nb_var = len(ui.find_elements(self._objects['product_new_nb_variation'][0],
                                               self._objects['product_new_nb_variation'][1]))
                 for x_variation in var_test.get('variation'):
+                    time.sleep(3)
                     v = ui.get_attribute(ui.def_object(self._objects['product_new_id_variation'], w), "data-index")
                     open_var = ui.def_object(self._objects['product_new_variation_open'], nb_var - 1)
                     ui.click(open_var)
@@ -764,7 +774,7 @@ class catalogProductScreen():
                 ui.set_text_script(self._objects['product_new_carrier_add_ship_coast'], var_test.get("cadd_ship_coast"))
                 carrier = ui.def_object(self._objects['product_new_carrier'], var_test.get("carrier"))
                 ui.click(carrier)
-
+                time.sleep(5)
                 ui.click(self._objects['product_new_save'])
 
                 time.sleep(3)
@@ -814,6 +824,8 @@ class catalogProductScreen():
                     v = v + 1
                 ui.checkbox(self._objects['product_new_info_price_priority_apply_to_all'],
                             var_test.get('price_priority_to_all'))
+
+            time.sleep(5)
             ui.click(self._objects['product_new_save'])
 
             time.sleep(3)
@@ -836,9 +848,10 @@ class catalogProductScreen():
                 my_elem.clear()
                 var_test['redirect_target_name'] = ui.get_text(self._objects['redirect_target_name'])
 
+            time.sleep(5)
             ui.click(self._objects['product_new_save'])
 
-            time.sleep(3)
+            time.sleep(5)
 
             ui.click(self._objects['product_new_options'])
             visibility = ui.def_object(self._objects['product_new_options_visibility'], var_test.get('visibility'))
@@ -898,10 +911,12 @@ class catalogProductScreen():
                     ui.set_text(name, x_perso['name'])
                     my_type = ui.def_object(self._objects['product_new_personalization_type'], v, x_perso['type'])
                     ui.click(my_type)
+                    time.sleep(5)
                     mandatory = ui.def_object(self._objects['product_new_personalization_mandatory'], v)
                     ui.checkbox(mandatory, x_perso['mandatory'])
                     v = v + 1
             if var_test.get('document_attach') != "":
+                ui.click(self._objects['product_new_document_attach_file_button'])
                 for x_document in var_test.get('document_attach'):
                     time.sleep(3)
                     ui.upload_file(self._objects['product_new_file_associate'], x_document['file'], True)
@@ -912,8 +927,8 @@ class catalogProductScreen():
                     ui.set_text(self._objects['product_new_document_attach_desc'], x_document['desc'], True)
                     ui.click(self._objects['product_new_document_attach_add'])
                     time.sleep(3)
+            time.sleep(5)
             ui.click(self._objects['product_new_save'])
-
             time.sleep(5)
             try:
                 ui.click(self._objects['product_footer_go_to_catalog'])

@@ -48,7 +48,6 @@ class ModuleScreen():
         except:
             None
         """
-        
         if var_test.get('view') == "grid" :
             ui.click(self._objects['grid_view'])
             nb_modules=int(ui.get_text(self._objects['nb_result_search']).split(" ")[0])
@@ -62,7 +61,7 @@ class ModuleScreen():
                     def_module = ui.def_object(self._objects['block_module'], i)
                     my_module = ui.find_element(def_module[0],def_module[1])
                 all_modules.append((my_module.get_attribute('data-name'),my_module.get_attribute('data-description'),my_module.get_attribute('data-author'),my_module.get_attribute('data-price'),my_module.get_attribute('data-categories')))
-                i=i+1;
+                i=i+1
             
             my_search_grid = False
             ui.set_text(self._objects['search'], var_test.get('search_name'))
@@ -70,11 +69,18 @@ class ModuleScreen():
             time.sleep(2)
             my_elem.send_keys(Keys.ENTER)
             nb_search_result=int(ui.get_text(self._objects['nb_result_search']).split(" ")[0])
+            decomposed_search_word = var_test.get('search_name').lower().split(" ")
+
             if nb_search_result > 0 :
                 nb_found=0
                 for modules_search in all_modules:
-                    if var_test.get('search_name').lower() in modules_search[0].lower() or var_test.get('search_name').lower() in modules_search[1].lower() or var_test.get('search_name').lower() in modules_search[2].lower():
-                        nb_found = nb_found +1 
+                    search = False
+                    for word in decomposed_search_word :
+                        if word in modules_search[0].lower() or word in modules_search[1].lower() or word.lower() in modules_search[2].lower():
+                            search = True
+
+                    if search :
+                        nb_found = nb_found +1
                 if nb_search_result == nb_found :
                     i=1
                     check_search = 0
@@ -89,14 +95,18 @@ class ModuleScreen():
                         check_module['data-author']=my_module.get_attribute('data-author')
                         
                         for var in check_module:
-                            if var_test.get('search_name').lower() in check_module.get(var).lower():
+                            search = False
+                            for word in decomposed_search_word:
+                                if word in check_module.get(var).lower():
+                                    search = True
+                            if search :
                                 check_search = check_search +1 
-                                break;
+                                break
                         i = i+1
                     
                     ui.click(self._objects['cancel_search'])
                     nb_modules2=int(ui.get_text(self._objects['nb_result_search']).split(" ")[0])    
-                    
+
                     if check_search == nb_search_result and nb_modules == nb_modules2:
                         my_search_grid = True
                     else:
@@ -122,7 +132,7 @@ class ModuleScreen():
                     def_module = ui.def_object(self._objects['list_module'], i)
                     my_module = ui.find_element(def_module[0],def_module[1])
                 all_modules.append((my_module.get_attribute('data-name'),my_module.get_attribute('data-description'),my_module.get_attribute('data-author'),my_module.get_attribute('data-price'),my_module.get_attribute('data-categories')))
-                i=i+1;
+                i=i+1
             
             my_search_list = False
             ui.set_text(self._objects['search'], var_test.get('search_name'))
@@ -130,11 +140,19 @@ class ModuleScreen():
             time.sleep(2)
             my_elem.send_keys(Keys.ENTER)
             nb_search_result=int(ui.get_text(self._objects['nb_result_search']).split(" ")[0])
+            decomposed_search_word = var_test.get('search_name').lower().split(" ")
             if nb_search_result > 0 :
                 nb_found=0
                 for modules_search in all_modules:
-                    if var_test.get('search_name').lower() in modules_search[0].lower() or var_test.get('search_name').lower() in modules_search[1].lower() or var_test.get('search_name').lower() in modules_search[2].lower():
-                        nb_found = nb_found +1 
+                    search = False
+                    for word in decomposed_search_word:
+                        if word in modules_search[0].lower() or word in modules_search[1].lower() or word.lower() in \
+                                modules_search[2].lower():
+                            search = True
+
+                    if search:
+                        nb_found = nb_found + 1
+
                 if nb_search_result == nb_found :
                     i=1
                     check_search = 0
@@ -149,14 +167,18 @@ class ModuleScreen():
                         check_module['data-author']=my_module.get_attribute('data-author')
                         
                         for var in check_module:
-                            if var_test.get('search_name').lower() in check_module.get(var).lower():
-                                check_search = check_search +1 
-                                break;
+                            search = False
+                            for word in decomposed_search_word:
+                                if word in check_module.get(var).lower():
+                                    search = True
+                            if search:
+                                check_search = check_search + 1
+                                break
                         i = i+1
                     
                     ui.click(self._objects['cancel_search'])
                     nb_modules2=int(ui.get_text(self._objects['nb_result_search']).split(" ")[0])    
-                    
+
                     if check_search == nb_search_result and nb_modules == nb_modules2:
                         my_search_list = True
                     else:
@@ -196,9 +218,9 @@ class ModuleScreen():
                 
                 ui.click(self._objects['cancel_search'])
             except:
-                    my_search_list = False
-                    ui.click(self._objects['cancel_search'])
-                    raise
+                my_search_list = False
+                ui.click(self._objects['cancel_search'])
+                raise
         
             return my_search_list
  
@@ -211,8 +233,7 @@ class ModuleScreen():
         except:
             None
         """    
-            
-        if var_test.get('view') == "grid" : 
+        if var_test.get('view') == "grid" :
             ui.click(self._objects['grid_view'])
             nb_modules=int(ui.get_text(self._objects['nb_result_search']).split(" ")[0])
             i=1
@@ -225,7 +246,7 @@ class ModuleScreen():
                     def_module = ui.def_object(self._objects['block_module'], i)
                     my_module = ui.find_element(def_module[0],def_module[1])
                 all_modules.append((my_module.get_attribute('data-name'),my_module.get_attribute('data-description'),my_module.get_attribute('data-author'),my_module.get_attribute('data-price'),my_module.get_attribute('data-categories')))
-                i=i+1;
+                i=i+1
             ui.click(self._objects['list_categories'])    
             all_categories=ui.find_elements(self._objects['name_categories'][0],self._objects['name_categories'][1])
             ui.click(self._objects['list_categories']) 
@@ -239,14 +260,14 @@ class ModuleScreen():
                 nb_result=int(ui.get_text(self._objects['nb_result_search']).split(" ")[0])
                 nb_found=0
                 for modules_search in all_modules:
-                    if modules_search[4] == cat.get_attribute('data-categories'):
+                    if modules_search[4] == cat.get_attribute('data-category-ref'):
                         nb_found = nb_found +1
 
                 if nb_found!=nb_result:
-                    if cat.get_attribute('data-categories') == None :
+                    if cat.get_attribute('data-category-ref') == None :
                         Context().logger.error("Cannot find the category")
                     else:
-                        Context().logger.error("Issue to find the right modules for the category: " + cat.get_attribute('data-categories') + ", nb result filtered = " + str(nb_result) + " and nb found module = " + str(nb_found))
+                        Context().logger.error("Issue to find the right modules for the category: " + cat.get_attribute('data-category-ref') + ", nb result filtered = " + str(nb_result) + " and nb found module = " + str(nb_found))
                 else:
                     total=total+nb_found
                 j=j+1   
@@ -254,9 +275,10 @@ class ModuleScreen():
             ui.click(self._objects['list_categories'])    
             ui.click(self._objects['reset_category_filter'])
                          
-            
             if total == nb_modules:
                 my_check_block = True
+            else:
+                Context().logger.error("Total of categories modules and modules number are not equal!!")
                 
             return my_check_block
      
@@ -274,7 +296,7 @@ class ModuleScreen():
                     def_module = ui.def_object(self._objects['list_module'], i)
                     my_module = ui.find_element(def_module[0],def_module[1])
                 all_modules.append((my_module.get_attribute('data-name'),my_module.get_attribute('data-description'),my_module.get_attribute('data-author'),my_module.get_attribute('data-price'),my_module.get_attribute('data-categories')))
-                i=i+1;
+                i=i+1
             ui.click(self._objects['list_categories'])    
             all_categories=ui.find_elements(self._objects['name_categories'][0],self._objects['name_categories'][1])
             ui.click(self._objects['list_categories']) 
@@ -288,20 +310,22 @@ class ModuleScreen():
                 nb_result=int(ui.get_text(self._objects['nb_result_search']).split(" ")[0])
                 nb_found=0
                 for modules_search in all_modules:
-                    if modules_search[4] == cat.get_attribute('data-categories'):
+                    if modules_search[4] == cat.get_attribute('data-category-ref'):
                         nb_found = nb_found +1 
     
                 if nb_found!=nb_result:
-                    if cat.get_attribute('data-categories') == None:
+                    if cat.get_attribute('data-category-ref') == None:
                         Context().logger.error("Cannot find the category")
                     else:
-                        Context().logger.error("Issue to find the right modules for the category: " + cat.get_attribute('data-categories') + ", nb result filtered = " + str(nb_result) + " and nb found module = " + str(nb_found))
+                        Context().logger.error("Issue to find the right modules for the category: " + cat.get_attribute('data-category-ref') + ", nb result filtered = " + str(nb_result) + " and nb found module = " + str(nb_found))
                 else:
                     total=total+nb_found
                 j=j+1   
                 
             if total == nb_modules:
                 my_check_list = True
+            else:
+                Context().logger.error("Total of categories modules and modules number are not equal!!")
             
             return my_check_list
  
@@ -310,9 +334,8 @@ class ModuleScreen():
         """
         TODO:
         faire la seletion du tri par la position dans la liste et nom sa valeur (pb en changeant de langue)
-        """ 
-        
-        if var_test.get('view') == "grid" : 
+        """
+        if var_test.get('view') == "grid" :
             my_order_grid = True
             """try:
                     ui.click(("css","a.hide-button"), test=True)
@@ -333,7 +356,7 @@ class ModuleScreen():
                     all_modules.append((my_module.get_attribute('data-name'),my_module.get_attribute('data-description'),my_module.get_attribute('data-author'),my_module.get_attribute('data-price'),my_module.get_attribute('data-categories')))
                 else:
                     all_modules.append((my_module.get_attribute('data-tech-name'),my_module.get_attribute('data-description'),my_module.get_attribute('data-author'),my_module.get_attribute('data-price'),my_module.get_attribute('data-categories')))
-                i=i+1;
+                i=i+1
             sort_type=[('name',0),('price',3),('price-desc',3)]
             for my_sort in sort_type:
                 sort_def = ui.def_object(self._objects['sort_type'], my_sort[0])
@@ -369,7 +392,7 @@ class ModuleScreen():
                             except:
                                 my_order_grid = False
                                 raise   
-                        j=j+1;    
+                        j=j+1
                 else:
                     all_modules = sorted(all_modules, key=lambda colonnes: colonnes[int(my_sort[1])].lower())
                     i=0
@@ -423,7 +446,7 @@ class ModuleScreen():
                     all_modules.append((my_module.get_attribute('data-name'),my_module.get_attribute('data-description'),my_module.get_attribute('data-author'),my_module.get_attribute('data-price'),my_module.get_attribute('data-categories')))
                 else:
                     all_modules.append((my_module.get_attribute('data-tech-name'),my_module.get_attribute('data-description'),my_module.get_attribute('data-author'),my_module.get_attribute('data-price'),my_module.get_attribute('data-categories')))
-                i=i+1;
+                i=i+1
             sort_type=[('name',0),('price',3),('price-desc',3)]
             for my_sort in sort_type:
                 sort_def = ui.def_object(self._objects['sort_type'], my_sort[0])
@@ -459,7 +482,7 @@ class ModuleScreen():
                             except:
                                 my_order_list = False
                                 raise   
-                        j=j+1;    
+                        j=j+1
                 else:
                     all_modules = sorted(all_modules, key=lambda colonnes: colonnes[int(my_sort[1])].lower())
                     i=0
@@ -513,7 +536,7 @@ class ModuleScreen():
                             all_installed_modules.append((my_module.get_attribute('data-name'),my_module.get_attribute('data-description'),my_module.get_attribute('data-author'),my_module.get_attribute('data-price'),my_module.get_attribute('data-categories')))
                         else:
                             all_installed_modules.append((my_module.get_attribute('data-tech-name'),my_module.get_attribute('data-description'),my_module.get_attribute('data-author'),my_module.get_attribute('data-price'),my_module.get_attribute('data-categories')))
-                        i = i+1;
+                        i = i+1
                 
                 #save of built-in modules
                 def_object2 = ui.def_object(self._objects['installed_modules_nb_result_search'], 2)
@@ -533,7 +556,7 @@ class ModuleScreen():
                             all_built_in_modules.append((my_module.get_attribute('data-name'),my_module.get_attribute('data-description'),my_module.get_attribute('data-author'),my_module.get_attribute('data-price'),my_module.get_attribute('data-categories')))
                         else:
                             all_built_in_modules.append((my_module.get_attribute('data-tech-name'),my_module.get_attribute('data-description'),my_module.get_attribute('data-author'),my_module.get_attribute('data-price'),my_module.get_attribute('data-categories')))
-                        j = j+1;
+                        j = j+1
                         
                 #save of theme modules
                 def_object3 = ui.def_object(self._objects['installed_modules_nb_result_search'], 3)
@@ -553,7 +576,7 @@ class ModuleScreen():
                             all_theme_modules.append((my_module.get_attribute('data-name'),my_module.get_attribute('data-description'),my_module.get_attribute('data-author'),my_module.get_attribute('data-price'),my_module.get_attribute('data-categories')))
                         else:
                             all_theme_modules.append((my_module.get_attribute('data-tech-name'),my_module.get_attribute('data-description'),my_module.get_attribute('data-author'),my_module.get_attribute('data-price'),my_module.get_attribute('data-categories')))
-                        k = k+1;        
+                        k = k+1
                         
                 my_sort = ui.def_object(self._objects['sort_type'], 'name')
                 ui.click(my_sort)
@@ -592,7 +615,7 @@ class ModuleScreen():
                                 Test.assert_equals(all_built_in_modules[j-1][0], my_module.get_attribute('data-name'), "'name' not matching", "'name' is ok")
                             else:
                                 Test.assert_equals(all_built_in_modules[j-1][0], my_module.get_attribute('data-tech-name'), "'name' not matching", "'name' is ok")
-                            j = j+1;
+                            j = j+1
                             
                     #theme modules
                     if (number_of_modules3 > 1): 
@@ -609,7 +632,7 @@ class ModuleScreen():
                                 Test.assert_equals(all_theme_modules[k-1][0], my_module.get_attribute('data-name'), "'name' not matching", "'name' is ok")
                             else:
                                 Test.assert_equals(all_theme_modules[k-1][0], my_module.get_attribute('data-tech-name'), "'name' not matching", "'name' is ok")
-                            k = k+1;        
+                            k = k+1
             except:
                     my_order_list = False
                     raise

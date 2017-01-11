@@ -1,22 +1,25 @@
-[{ 
-  "page":"admin_admin_page",
-  "function": "delete_employee", 
-  "log": "Deletion of employee",
-  "variables": ""
-},{ 
-  "page":"admin_admin_page",
-  "function": "add_employee", 
-  "log": "Validation creation new employee",
-  "variables": 
-	[ 
-		{
-		"firstname":"testfirstname",
-		"lastname":"testlastname",
-		"email":"testgmqa@testgmaqa.fr",
-		"password":"presta1234",
-		"prestanl":"no",
-		"active":"yes",
-		"profile":"SuperAdmin"
-		}
-	] 
-} ]
+[
+	{ 
+  		"page":"admin_admin_page",
+  		"function": "delete_employee", 
+  		"log": "Deletion of employee",
+  		"variables": ""
+	},
+	{ 
+  		"page":"admin_admin_page",
+		"function": "add_employee", 
+		"log": "Validation creation new employee",
+		"variables": 
+		[ 
+			{
+				"firstname":"testfirstname",
+				"lastname":"testlastname",
+				"email":"testgmqa@testgmaqa.fr",
+				"password":"presta1234",
+				"prestanl":"no",
+				"active":"yes",
+				"profile":"SuperAdmin"
+			}
+		] 
+	}
+]

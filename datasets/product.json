@@ -7,7 +7,7 @@
 		[
 			{
 				"name":"AutoNewStandard",
-				"type":"virtual",
+				"type":"standard",
 				"new_type":"0",
 				"ref":"new product automate",
 				"ean13":"0123456789987",
@@ -215,7 +215,7 @@
 		[
 			{
 				"name":"AutoNewPack",
-				"type":"virtual",
+				"type":"pack of products",
 				"new_type":"1",
 				"ref":"new product automate",
 				"ean13":"0123456789987",
